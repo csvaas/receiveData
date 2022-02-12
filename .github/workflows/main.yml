@@ -27,6 +27,15 @@ jobs:
           python-version: "3.8"
       - name: flake8 Lint
         uses: py-actions/flake8@v2
+        
+  security-scan:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source repository
+        uses: actions/checkout@v2
+      - name: Perform Scan
+        uses: ShiftLeftSecurity/scan-action@master
 
   deploy_lambda:
     runs-on: ubuntu-latest
