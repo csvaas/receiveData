@@ -39,6 +39,15 @@ def lambda_handler(event, context):
         return {"statusCode": statusCode, "body": str(statusTxt)}
 
     # Convert JSON to CSV
-    # ToDo
+    inputParams = {"JSON": event["body"]}
+
+    resConvJSON = client.invoke(
+        FunctionName=CON_FUNC,
+        INVOCATION_TYPE=INVOCATION_TYPE,
+        Payload=json.dumps(inputParams),
+    )
+
+    responseJson = json.load(resValJSON["Payload"])
+    print(responseJson)
 
     return {"statusCode": statusCode, "body": str(statusTxt)}
