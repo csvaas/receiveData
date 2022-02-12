@@ -43,7 +43,7 @@ def lambda_handler(event, context):
 
     resConvJSON = client.invoke(
         FunctionName=CON_FUNC,
-        INVOCATION_TYPE=INVOCATION_TYPE,
+        InvocationType=INVOCATION_TYPE,
         Payload=json.dumps(inputParams),
     )
 
