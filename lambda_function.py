@@ -1,5 +1,6 @@
 import json
-import boto3
+
+# import boto3
 
 CONTENT_TYPE = "Content-Type"
 CONTENT_TYPE_VAL = "application/json"
