@@ -10,9 +10,9 @@ jobs:
       - uses: actions/checkout@v2
       - uses: piotrpawlaczek/python-blacken@release/stable
         with:
-          path: '.'
-          sanity-check: 'safe'
-          only-check: 'yes'
+          path: "."
+          sanity-check: "safe"
+          only-check: "yes"
 
   flake8-lint:
     name: flake8
@@ -42,4 +42,4 @@ jobs:
       - name: deploy
         run: |
           zip -j deploy.zip ./*
-          aws lambda update-function-code --function-name=receiveJSON --zip-file fileb://deploy.zip 
+          aws lambda update-function-code --function-name=receiveData --zip-file fileb://deploy.zip
