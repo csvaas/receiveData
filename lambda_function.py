@@ -20,10 +20,17 @@ def lambda_handler(event, context):
     # Validate JSON
     inputParams = {"JSON": event["body"]}
 
-    client.invoke(
+    resValJSON = client.invoke(
         FunctionName=VAL_FUNC,
         InvocationType=INVOCATION_TYPE,
         Payload=json.dumps(inputParams),
     )
 
-    return {"statusCode": 200, "text": json.loads(header)}
+    responseJson = json.load(resValJSON["Payload"])
+    for key, value in responseJson.items():
+        if key == "statusCode":
+            statusCode = value
+        elif key == "statusTxt":
+            statusTxt = value
+
+    return {"statusCode": statusCode, "text": statusTxt}
