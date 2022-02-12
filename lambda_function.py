@@ -37,4 +37,4 @@ def lambda_handler(event, context):
 
     print(statusCode)
     print(statusTxt)
-    return {"statusCode": statusCode, "text": statusTxt}
+    return {"statusCode": str(statusCode), "text": str(statusTxt)}
