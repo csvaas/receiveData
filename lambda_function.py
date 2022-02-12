@@ -16,7 +16,7 @@ def lambda_handler(event, context):
     if header[CONTENT_TYPE] != CONTENT_TYPE_VAL:
         status_txt = "Wrong Content-Type! Use " + CONTENT_TYPE_VAL
         print(status_txt)
-        return {"statusCode": 400, "text": status_txt}
+        return {"statusCode": 400, "body": status_txt}
 
     # Validate JSON
     inputParams = {"JSON": event["body"]}
@@ -37,4 +37,4 @@ def lambda_handler(event, context):
 
     print(statusCode)
     print(statusTxt)
-    return {"statusCode": str(statusCode), "text": str(statusTxt)}
+    return {"statusCode": statusCode, "body": str(statusTxt)}
