@@ -28,13 +28,17 @@ def lambda_handler(event, context):
     )
 
     responseJson = json.load(resValJSON["Payload"])
-    print(responseJson)
     for key, value in responseJson.items():
         if key == "statusCode":
             statusCode = value
         elif key == "statusTxt":
             statusTxt = value
 
-    print(statusCode)
-    print(statusTxt)
+    print(responseJson)
+    if statusCode != 200:
+        return {"statusCode": statusCode, "body": str(statusTxt)}
+
+    # Convert JSON to CSV
+    # ToDo
+
     return {"statusCode": statusCode, "body": str(statusTxt)}
