@@ -49,5 +49,22 @@ def lambda_handler(event, context):
 
     responseJson = json.load(resConvJSON["Payload"])
     print(responseJson)
+    for key, value in responseJson.items():
+        if key == "statusCode":
+            statusCode = value
+        elif key == "headers":
+            headers = value
+        elif key == "body":
+            csv = value
+        elif key == "isBase64Encoded":
+            encoded = value
 
-    return {"statusCode": statusCode, "body": str(statusTxt)}
+    if statusCode != 200:
+        return {"statusCode": statusCode, "body": "Failed ToDo"}
+
+    return {
+        "headers": headers,
+        "statusCode": 200,
+        "body": csv,
+        "isBase64Encoded": encoded,
+    }
