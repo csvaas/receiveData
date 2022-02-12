@@ -47,7 +47,7 @@ def lambda_handler(event, context):
         Payload=json.dumps(inputParams),
     )
 
-    responseJson = json.load(resValJSON["Payload"])
+    responseJson = json.load(resConvJSON["Payload"])
     print(responseJson)
 
     return {"statusCode": statusCode, "body": str(statusTxt)}
