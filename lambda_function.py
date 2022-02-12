@@ -15,6 +15,7 @@ def lambda_handler(event, context):
     # Check Content-Type
     if header[CONTENT_TYPE] != CONTENT_TYPE_VAL:
         status_txt = "Wrong Content-Type! Use " + CONTENT_TYPE_VAL
+        print(status_txt)
         return {"statusCode": 400, "text": status_txt}
 
     # Validate JSON
@@ -27,10 +28,13 @@ def lambda_handler(event, context):
     )
 
     responseJson = json.load(resValJSON["Payload"])
+    print(responseJson)
     for key, value in responseJson.items():
         if key == "statusCode":
             statusCode = value
         elif key == "statusTxt":
             statusTxt = value
 
+    print(statusCode)
+    print(statusTxt)
     return {"statusCode": statusCode, "text": statusTxt}
