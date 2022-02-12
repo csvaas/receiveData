@@ -6,7 +6,7 @@ CONTENT_TYPE_VAL = "application/json"
 
 
 def lambda_handler(event, context):
-    client = boto3.client("lambda")
+    #client = boto3.client("lambda")
     header = event["headers"]
 
     # Check Content-Type
