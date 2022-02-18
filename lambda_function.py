@@ -9,7 +9,6 @@ CON_FUNC = "arn:aws:lambda:eu-central-1:255547448515:function:convertJSONtoCSV"
 STATUS_OK = 200
 STATUS_ERROR = 400
 
-
 def lambda_handler(event, context):
     client = boto3.client("lambda")
     header = event["headers"]
@@ -37,6 +36,7 @@ def lambda_handler(event, context):
             statusTxt = value
 
     print(responseJson)
+
     if statusCode != STATUS_OK:
         return {"statusCode": statusCode, "body": statusTxt}
 
